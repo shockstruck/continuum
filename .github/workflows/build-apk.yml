@@ -26,37 +26,46 @@ jobs:
       with:
         arguments: assembleDebug assembleRelease -x lint -x lintVitalMinifiedRelease -x lintVitalRelease
 
-    - name: Sign Release APK
-      uses: r0adkll/sign-android-release@v1
-      id: sign_app
-      with:
-        releaseDirectory: app/build/outputs/apk/release
-        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-        alias: ${{ secrets.KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
+    - name: Sign Release APKs
       env:
-        BUILD_TOOLS_VERSION: "34.0.0"
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: |
+        echo "$SIGNING_KEY" | base64 -d > keystore.jks
+        mkdir -p app/build/outputs/apk/signed
+        for apk in app/build/outputs/apk/release/*.apk; do
+          filename=$(basename "$apk" .apk)
+          ${ANDROID_HOME}/build-tools/34.0.0/apksigner sign \
+            --ks keystore.jks \
+            --ks-key-alias "$KEY_ALIAS" \
+            --ks-pass pass:"$KEY_STORE_PASSWORD" \
+            --key-pass pass:"$KEY_PASSWORD" \
+            --out "app/build/outputs/apk/signed/${filename}-signed.apk" \
+            "$apk"
+        done
+        rm keystore.jks
 
-    - name: Upload Debug APK
+    - name: Upload Debug APKs
       uses: actions/upload-artifact@v4
       with:
         name: Continuum-debug-${{github.sha}}
         path: app/build/outputs/apk/debug/*.apk
         if-no-files-found: error
 
-    - name: Upload Signed Release APK
+    - name: Upload Signed Release APKs
       uses: actions/upload-artifact@v4
       with:
         name: Continuum-release-${{github.sha}}
-        path: ${{steps.sign_app.outputs.signedReleaseFile}}
+        path: app/build/outputs/apk/signed/*.apk
         if-no-files-found: error
 
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/v')
       uses: softprops/action-gh-release@v2
       with:
-        files: ${{steps.sign_app.outputs.signedReleaseFile}}
+        files: app/build/outputs/apk/signed/*.apk
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
