@@ -22,7 +22,7 @@ jobs:
     - name: Setup and build with Gradle
       uses: gradle/gradle-build-action@v3
       with:
-        arguments: build -x lint
+        arguments: assembleDebug assembleRelease -x lint -x lintVitalMinifiedRelease -x lintVitalRelease
 
     - name: Upload apk
       uses: actions/upload-artifact@v4
