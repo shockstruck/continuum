@@ -43,7 +43,7 @@ public class APIUtils {
     public static final String STATE_KEY = "state";
     public static final String STATE = "23ro8xlxvzp4asqd";
     public static final String REDIRECT_URI_KEY = "redirect_uri";
-    public static final String REDIRECT_URI = "continuum://localhost";
+    public static final String REDIRECT_URI = "redreader://rr_oauth_redir";
     public static final String DURATION_KEY = "duration";
     public static final String DURATION = "permanent";
     public static final String SCOPE_KEY = "scope";
@@ -61,8 +61,8 @@ public class APIUtils {
     public static final String AUTHORIZATION_KEY = "Authorization";
     public static final String AUTHORIZATION_BASE = "bearer ";
     public static final String USER_AGENT_KEY = "User-Agent";
-    public static final String USER_AGENT = "android:org.cygnusx1.continuum:" + BuildConfig.VERSION_NAME + " (by /u/edgan)";
-    public static final String ANONYMOUS_USER_AGENT = "android:org.cygnusx1.continuum:" + BuildConfig.VERSION_NAME + " (by /u/edgan)";
+    public static final String USER_AGENT = "RedReader/1.25.1";
+    public static final String ANONYMOUS_USER_AGENT = "RedReader/1.25.1";
     public static final String USERNAME_KEY = "username";
 
     public static final String GRANT_TYPE_KEY = "grant_type";
