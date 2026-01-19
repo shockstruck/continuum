@@ -1,4 +1,4 @@
-<h1 align="center">Continuum</h1>
+<h1 align="center">Continuum (RedReader Spoof)</h1>
 
 <p align="center">
   <picture>
@@ -16,74 +16,66 @@
 
 <hr style="display: inline-block; width: 100%; border: 1px dotted #ff00cc;">
 
-<p align="center" style="margin-top: -2em;">
-  <a href="https://discord.gg/vDuSpJEDrW">
-    <picture>
-      <source height="24px" media="(prefers-color-scheme: dark)" srcset="/assets/icons/Discord.png" />
-      <img height="24px" src="/assets/icons/Discord.png" />
-    </picture>
-  </a>&nbsp;&nbsp;&nbsp;
-  <a href="https://old.reddit.com/r/continuumreddit/">
-    <picture>
-      <source height="24px" media="(prefers-color-scheme: dark)" srcset="/assets/icons/Reddit.png" />
-      <img height="24px" src="/assets/icons/Reddit.png" />
-    </picture>
-  </a>
-</p>
 
+A Reddit client on Android written in Java. It does not have any ads and it features a clean UI and smooth browsing experience.
 
-
-
-
-A Reddit client on Android written in Java. It does not have any ads and it features a clean UI and smooth browsing experience
+**This fork is pre-configured with RedReader credentials**, allowing free Reddit API access without needing your own Client ID.
 
 <br>
 
 <div align="center">
 
-[Releases](https://github.com/cygnusx-1-org/continuum/releases)
-[License](https://github.com/cygnusx-1-org/continuum/blob/master/LICENSE)
-[GitHub issues](https://github.com/cygnusx-1-org/continuum/issues)
+[Releases](https://github.com/shockstruck/continuum/releases)
+[License](https://github.com/shockstruck/continuum/blob/master/LICENSE)
+[GitHub issues](https://github.com/shockstruck/continuum/issues)
 
 </div>
 
 ---
+
+# RedReader Spoof Modifications
+
+This fork includes hardcoded RedReader OAuth credentials:
+
+- **Redirect URI**: `redreader://rr_oauth_redir`
+- **User Agent**: `RedReader/1.25.1`
+
+RedReader has a special agreement with Reddit for free API access due to its accessibility features. This fork spoofs those credentials to bypass Reddit's API pricing.
+
+## Getting a RedReader Client ID
+
+To use this app, you need a RedReader Client ID:
+
+1. Go to [https://www.reddit.com/prefs/apps](https://www.reddit.com/prefs/apps)
+2. Click "create another app..." at the bottom
+3. Fill in the form:
+   - **name**: anything (e.g., "RedReader")
+   - **app type**: select "installed app"
+   - **redirect uri**: `redreader://rr_oauth_redir`
+4. Click "create app"
+5. Copy the Client ID (string under the app name)
+6. Enter the Client ID in the app settings
+
+## Installation
+
+Download the latest APK from [Releases](https://github.com/shockstruck/continuum/releases):
+- `arm64-v8a` - For modern 64-bit devices (most phones from 2017+)
+- `armeabi-v7a` - For older 32-bit devices
+
+---
+
 # Fork
-This project is a fork of [Infinity for Reddit](https://github.com/Docile-Alligator/Infinity-For-Reddit).
-
-One major enhancement is that it lets you set your own `Client ID` as a setting.
-This means you don't need to recompile it each time, or to use [ReVanced Manager](https://github.com/ReVanced/revanced-manager).
-
-# Setup
-See [SETUP.md](/SETUP.md)
-
-# Installation
-You can easily install and update Continuum with [Discoverium](https://github.com/cygnusx-1-org/Discoverium/) via its search button.
-<p align="left">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/badges/discoverium.png" height="60">
-      <img alt="Get it on Discoverium" src="assets/badges/discoverium.png" height="60">
-    </picture>
-  </a>
-  </a>&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/cygnusx-1-org/continuum/releases/latest">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/badges/github.png" height="60">
-      <img alt="Get it on Github" src="assets/badges/github.png" height="60">
-    </picture>
-  </a>
-</p>
-
-
+This project is a fork of [Continuum](https://github.com/cygnusx-1-org/continuum), which is a fork of [Infinity for Reddit](https://github.com/Docile-Alligator/Infinity-For-Reddit).
 
 # About The Project
 Unique features of **Continuum**:
 
-- Ability to use your own `Client ID`.
-- Ability to use your own Giphy gifs API key.
-- Ability to backup your accounts.
-- The max number of main page tabs has been increased to six.
-- Sensible download names.
+- Pre-configured RedReader spoof (this fork)
+- Ability to use your own `Client ID`
+- Ability to use your own Giphy gifs API key
+- Ability to backup your accounts
+- The max number of main page tabs has been increased to six
+- Sensible download names
 - Bug fixes and more...
 
 <details>
