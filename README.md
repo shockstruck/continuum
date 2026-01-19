@@ -46,15 +46,10 @@ RedReader has a special agreement with Reddit for free API access due to its acc
 
 To use this app, you need a RedReader Client ID:
 
-1. Go to [https://www.reddit.com/prefs/apps](https://www.reddit.com/prefs/apps)
-2. Click "create another app..." at the bottom
-3. Fill in the form:
-   - **name**: anything (e.g., "RedReader")
-   - **app type**: select "installed app"
-   - **redirect uri**: `redreader://rr_oauth_redir`
-4. Click "create app"
-5. Copy the Client ID (string under the app name)
-6. Enter the Client ID in the app settings
+1. Install the official [RedReader app](https://play.google.com/store/apps/details?id=org.quantumbadger.redreader) on your phone
+2. Sign in with your Reddit account
+3. Reddit will email you a Client ID for RedReader
+4. Enter the Client ID in this app's settings
 
 ## Installation
 
